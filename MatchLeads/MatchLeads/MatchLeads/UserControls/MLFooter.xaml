@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="MatchLeads.UserControls.MLFooter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="#ebebeb" Height="100">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Height="0.5" Background="Black" Opacity="0.5" Grid.ColumnSpan="4"/>
+
+        <!--Appointments-->
+        <StackPanel Name="SPAppointments" Grid.Row="1" Tap="SPAppointments_Tap">
+            <Image Source="/Images/appointment.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Appointments" Foreground="red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Name="SPAppointmentsClick" Grid.Row="1" Visibility="Collapsed">
+            <Image Source="/Images/appointmentClick.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Appointments" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <!--Search-->
+        <StackPanel Name="SPSearch" Grid.Row="1" Grid.Column="1" Tap="SPSearch_Tap">
+            <Image Source="/Images/search.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Search" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Name="SPSearchClick" Grid.Row="1" Grid.Column="1" Visibility="Collapsed">
+            <Image Source="/Images/searchClick.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Search" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <!--Settings-->
+        <StackPanel Name="SPSettings" Grid.Row="1" Grid.Column="2" Tap="SPSettings_Tap">
+            <Image Source="/Images/setting.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Settings" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Name="SPSettingsClick" Grid.Row="1" Grid.Column="2" Visibility="Collapsed">
+            <Image Source="/Images/settingClick.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Settings" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <!--Events-->
+        <StackPanel Name="SPEvents" Grid.Row="1" Grid.Column="3" Tap="SPEvents_Tap">
+            <Image Source="/Images/eventsnew.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Events" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Name="SPEventsClick" Grid.Row="1" Grid.Column="3" Visibility="Collapsed">
+            <Image Source="/Images/eventsnewClick.png" Height="60" Margin="0,12,0,0"/>
+            <TextBlock Text="Events" Foreground="Red" FontSize="17" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

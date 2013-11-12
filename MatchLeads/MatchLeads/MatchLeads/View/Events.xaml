@@ -1,0 +1,151 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MatchLeads.View.Events"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    xmlns:myFooter="clr-namespace:MatchLeads.UserControls"
+    Loaded="PhoneApplicationPage_Loaded"
+    >
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#f7f7f7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Background="#f05b5b">
+            <TextBlock Text="Events" FontSize="40" FontFamily="Segoe UI"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15,0,15"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Name="spEvents" Background="#ebebeb" Tap="spEvents_Tap">
+                <TextBlock Text="Events" Foreground="Black" FontFamily="Segoe UI" FontSize="23" Padding="12"/>
+                <Canvas Height="1.5" Background="Red" Opacity="0.5"/>
+            </StackPanel>
+
+            <!--Events List-->
+            <ListBox Name="LBEventList" Grid.Row="1" ItemsSource="{Binding}" Visibility="Collapsed" SelectionChanged="LBEventList_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO"/>
+                                <RowDefinition Height="1.5"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="AUTO"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="AUTO"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding EventLogoImageURL}" Stretch="Fill" Width="80" Height="80" Margin="5"/>
+                            <TextBlock Text="{Binding Event_Name}" Foreground="Black" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI"  FontSize="28"/>
+                            <RadioButton IsChecked="{Binding IsCheck,Mode=TwoWay}" CommandParameter="{Binding Event_ID}" Grid.Column="2" GroupName="radioEventGroup">
+                                <RadioButton.Background>
+                                    <ImageBrush ImageSource="/Images/radioUnCheck.png"/>
+                                </RadioButton.Background>
+                            </RadioButton>
+                            <Canvas Background="Black" Width="{Binding pageWidth}" Grid.Row="1" Grid.ColumnSpan="3" Opacity="0.3"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!--<Grid  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="1.5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="AUTO"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="AUTO"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/defaultUser.png" Stretch="Fill" Width="80" Height="80" Margin="5"/>
+                <TextBlock Text="cop 12" Foreground="Black" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="Segoe UI"  FontSize="28"/>
+                <RadioButton IsChecked="{Binding IsCheck,Mode=TwoWay}" CommandParameter="{Binding Event_ID}" Grid.Column="2" GroupName="radioEventGroup">
+                    <RadioButton.Background>
+                        <ImageBrush ImageSource="/Images/radioUnCheck.png"/>
+                    </RadioButton.Background>
+                </RadioButton>
+                <Canvas Background="Black" Width="{Binding pageWidth}" Grid.Row="1" Grid.ColumnSpan="3" Opacity="0.3"/>
+            </Grid>-->
+
+
+            <!--Selected Event details-->
+            <!--Row 2-->
+            <ScrollViewer Grid.Row="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Row 0-->
+                    <Grid Background="#dedede" Margin="0,5,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO"/>
+                            <RowDefinition Height="AUTO"/>
+                            <RowDefinition Height="AUTO"/>
+                            <RowDefinition Height="AUTO"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="AUTO"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="tbEventName" Text="" Grid.ColumnSpan="2" Foreground="Black" FontFamily="Segoe UI" FontSize="23" Padding="10,5,5,0" TextWrapping="Wrap"/>
+                        <TextBlock Name="tbEventStatus" Text="" Grid.Row="1" Foreground="#9c9c9c" Padding="10,5,5,0" TextWrapping="Wrap" FontFamily="Segoe UI"/>
+                        <TextBlock Name="tbEventStartDate" Text="" Grid.Row="2" Foreground="#9c9c9c" Padding="10,5,5,0" TextWrapping="Wrap" FontFamily="Segoe UI"/>
+                        <TextBlock Name="tbEventEndDate" Text="" Grid.Row="3" Foreground="#9c9c9c" Padding="10,5,5,0" TextWrapping="Wrap" FontFamily="Segoe UI"/>
+                        <Image Name="imgEventLogo" Source="" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Stretch="Fill" Width="130" Height="100" Margin="5"/>
+                    </Grid>
+
+                    <!--Row 1-->
+                    <StackPanel Grid.Row="1">
+                        <TextBlock  Text="Phone Number" Foreground="Black" Padding="5,10,5,5" FontFamily="Segoe UI"  FontSize="23"/>
+                        <Canvas  Background="Black" Height="1.5" Opacity="0.5" Margin="5,0,5,0" />
+                        <TextBlock Name="tbEventPhone" Text="" Foreground="#9c9c9c" Padding="5" FontFamily="Segoe UI" />
+                    </StackPanel>
+                    <!--Row 1-->
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="Address" Foreground="Black" Padding="5,10,5,5" FontFamily="Segoe UI"  FontSize="23"/>
+                        <Canvas Background="Black" Height="1.5" Opacity="0.5" Margin="5,0,5,0" />
+                        <TextBlock Name="tbEventAddress" Text="" Foreground="#9c9c9c" Padding="5" FontFamily="Segoe UI" />
+                    </StackPanel>
+
+                    <!--Row 1-->
+                    <StackPanel Grid.Row="3">
+                        <TextBlock Text="Description" Foreground="Black" Padding="5,10,5,5" FontFamily="Segoe UI"  FontSize="23"/>
+                        <Canvas Background="Black" Height="1.5" Opacity="0.5" Margin="5,0,5,0" />
+                        <TextBlock Name="tbEventDescription" Text="" Foreground="#9c9c9c" Padding="5" FontFamily="Segoe UI" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+
+            <!--Footer-->
+            <!--Row 3-->
+            <myFooter:MLFooter Grid.Row="3"/>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

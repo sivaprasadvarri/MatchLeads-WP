@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="MatchLeads.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    Loaded="PhoneApplicationPage_Loaded"
+    >
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#f7f7f7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Background="Transparent">
+            <TextBlock x:Name="PageTitle" Text="Match Leads" Foreground="#f05b5b" Margin="0,100,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="55" FontFamily="Segoe UI"/>
+        </StackPanel>
+        <!--PhoneTextExtraLargeStyle-->
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height=".5"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height=".5"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+                <RowDefinition Height="AUTO"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+
+            <TextBox Name="tbEmail" Text="Email" FontFamily="Segoe UI" Height="80"  Grid.Row="0" Padding="0,15,0,0" Margin="0,50,0,0" Foreground="#a8a8a8" Background="#f7f7f7" BorderThickness="0" Tap="tbEmail_Tap" LostFocus="tbEmail_LostFocus"/>
+
+            <PasswordBox Name="pbPwd" Password="vspwd" FontFamily="Segoe UI" Height="80" Grid.Row="2" Padding="0,15,0,0" Margin="0,20,0,0" Foreground="#a8a8a8" Background="#f7f7f7" BorderThickness="0" Tap="pbPwd_Tap" LostFocus="pbPwd_LostFocus"/>
+            
+            <Button Name="btnLogin" Content="Login" Height="50" Style="{StaticResource ButtonRoundedCornerStyle}" Grid.Row="4" Margin="40,50,40,0" BorderBrush="#f05b5b" BorderThickness="0" Click="btnLogin_Click"/>
+            <Button Name="btnLoginDisable" Content="Login" Height="50" Background="#ff8a8a" Style="{StaticResource ButtonRoundedCornerStyle}" Grid.Row="4" Margin="40,50,40,0" BorderBrush="#ff7a7a" BorderThickness="0" Visibility="Collapsed"/>
+
+            <Canvas Background="Black" Grid.Row="1" Opacity="0.5" Margin="10,0,10,0"/>
+            <Canvas Background="Black" Grid.Row="3" Opacity="0.5" Margin="10,0,10,0"/>
+
+
+        </Grid>
+        <Grid Grid.Row="2" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Bottom" Height="AUTO" >
+                <Canvas Background="Black" Height="0.5" Opacity="0.5"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <HyperlinkButton Name="hyperlinkSignUp" FontFamily="Segoe UI" Content="Sign Up" FontSize="25" Grid.Column="0" Foreground="Black" Margin="0,20,0,20" Click="hyperlinkSignUp_Click"/>
+                    <Canvas Background="Black" Grid.Column="1" Opacity="0.5" Margin="0,10,0,10"/>
+                    <HyperlinkButton Name="hyperlinkForgotPWD" FontFamily="Segoe UI" Content="Forgot Password ?"  FontSize="25" Grid.Column="2" Foreground="Black" Click="hyperlinkForgotPWD_Click"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <ProgressBar Name="CustprogressBar" IsIndeterminate="True" Foreground="Red" Background="White" Style="{StaticResource CustomIndeterminateProgressBar}" VerticalAlignment="Top" Height="20" Visibility="Collapsed" />
+    </Grid>
+
+</phone:PhoneApplicationPage>
